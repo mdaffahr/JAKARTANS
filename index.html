@@ -3,98 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TEAM DKI JAKARTA | Linktree</title>
+    <title>Portal Internal - Sourcing JKT</title>
     <style>
-        /* Desain dasar halaman - Tema Gelap Modern */
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: #121212;
-            color: #ffffff;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 50px 20px;
-            margin: 0;
-        }
-
-        /* Desain Logo Tim */
-        .profile-pic {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 20px;
-            border: 3px solid #ffaa00; /* Aksen warna oranye/kuning khas kota */
-            box-shadow: 0 4px 15px rgba(255, 170, 0, 0.2);
-        }
-
-        /* Teks Nama dan Deskripsi */
-        .name {
-            font-size: 26px;
-            font-weight: 800;
-            letter-spacing: 1px;
-            margin-bottom: 10px;
-            text-align: center;
-        }
-        .bio {
-            font-size: 15px;
-            color: #b3b3b3;
-            margin-bottom: 40px;
-            text-align: center;
-            max-width: 450px;
-            line-height: 1.6;
-        }
-
-        /* Wadah untuk tombol-tombol */
-        .link-container {
-            width: 100%;
-            max-width: 400px;
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        /* Desain Tombol Link */
-        .link-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            padding: 16px 20px;
-            background-color: #1e1e1e;
-            color: #ffffff;
-            text-decoration: none;
-            border-radius: 12px;
-            font-weight: 600;
-            border: 1px solid #333;
-            transition: all 0.3s ease;
-            box-sizing: border-box;
-        }
-
-        /* Efek saat tombol disentuh/di-hover */
-        .link-btn:hover {
-            background-color: #ffaa00; /* Berubah jadi oranye saat disentuh */
-            color: #121212; /* Teks jadi gelap */
-            border-color: #ffaa00;
-            transform: translateY(-4px);
-            box-shadow: 0 6px 15px rgba(255, 170, 0, 0.3);
-        }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f7f6; margin: 0; padding: 0; }
+        
+        /* Gaya untuk Halaman Login */
+        #login-screen { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; }
+        .card { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); width: 90%; max-width: 350px; text-align: center; }
+        input[type="password"] { padding: 12px; width: 80%; margin: 15px 0; border: 1px solid #ccc; border-radius: 4px; font-size: 16px; text-align: center; }
+        button { background-color: #0056b3; color: white; padding: 12px 24px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; font-weight: bold; width: 100%;}
+        button:hover { background-color: #004494; }
+        
+        /* Gaya untuk Dashboard */
+        #dashboard { display: none; padding: 20px; max-width: 800px; margin: 0 auto; }
+        .header { text-align: center; margin-bottom: 30px; }
+        .header h1 { color: #0056b3; margin-bottom: 5px;}
+        .section { background: white; padding: 20px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        h2 { color: #333; font-size: 18px; border-bottom: 2px solid #f4f7f6; padding-bottom: 10px;}
+        ul { list-style-type: none; padding: 0; }
+        li { padding: 8px 0; border-bottom: 1px solid #eee; }
+        li:last-child { border-bottom: none; }
+        a { color: #0056b3; text-decoration: none; font-weight: bold;}
+        a:hover { text-decoration: underline; }
+        
+        /* Gaya untuk Tabel */
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 14px;}
+        th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+        th { background-color: #0056b3; color: white; }
     </style>
 </head>
 <body>
 
-    <img src="https://via.placeholder.com/150/1e1e1e/ffaa00?text=DKI" alt="Logo Team DKI Jakarta" class="profile-pic">
-
-    <div class="name">TEAM DKI JAKARTA</div>
-    <div class="bio">Portal Resmi Informasi & Komunitas Team DKI Jakarta. Mari Maju Bersama! 🏙️</div>
-
-    <div class="link-container">
-        <a href="#" class="link-btn">📝 Formulir Pendaftaran Anggota</a>
-        <a href="#" class="link-btn">📢 Grup WhatsApp / Telegram Resmi</a>
-        <a href="#" class="link-btn">📸 Instagram Team DKI Jakarta</a>
-        <a href="#" class="link-btn">🗓️ Jadwal Kegiatan & Event</a>
-        <a href="#" class="link-btn">🌐 Hubungi Kordinator Wilayah</a>
+    <!-- HALAMAN LOGIN PIN -->
+    <div id="login-screen">
+        <div class="card">
+            <h2>🔒 Portal Sourcing JKT</h2>
+            <p style="color: #666; font-size: 14px;">Masukkan PIN Tim untuk mengakses dashboard.</p>
+            <input type="password" id="pin-input" placeholder="Masukkan PIN">
+            <button onclick="checkPIN()">Masuk</button>
+            <p id="error-msg" style="color: red; display: none; font-size: 14px; margin-top: 15px;">PIN Salah! Silakan coba lagi.</p>
+        </div>
     </div>
+
+    <!-- DASHBOARD INTERNAL (Tersembunyi sebelum PIN benar) -->
+    <div id="dashboard">
+        <div class="header">
+            <h1>Dashboard Sourcing JKT</h1>
+            <p style="color: #666;">Pusat Informasi Operasional Internal Tim</p>
+        </div>
+
+        <div class="section">
+            <h2>📌 Pipeline Target Saat Ini</h2>
+            <ul>
+                <li>⚡ <strong>KB Finansia:</strong> 102 Kandidat CMO</li>
+                <li>⚡ <strong>Internal:</strong> Kebutuhan Sales Officer Mobile (SOM)</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>👥 Mapping Area & PIC</h2>
+            <table>
+                <tr>
+                    <th>Recruiter</th>
+                    <th>Fokus Area / Akun Klien</th>
+                </tr>
+                <tr><td><strong>Ali</strong></td><td>[Klik untuk edit area Ali]</td></tr>
+                <tr><td><strong>Tito</strong></td><td>[Klik untuk edit area Tito]</td></tr>
+                <tr><td><strong>Roky</strong></td><td>[Klik untuk edit area Roky]</td></tr>
+                <tr><td><strong>Edy</strong></td><td>[Klik untuk edit area Edy]</td></tr>
+                <tr><td><strong>Faiz</strong></td><td>[Klik untuk edit area Faiz]</td></tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>📁 Resource Center</h2>
+            <ul>
+                <li>🔗 <a href="#">Link Google Form Pendaftaran Kandidat</a></li>
+                <li>📄 <a href="#">Detail MoU Polteknaker</a></li>
+                <li>📘 <a href="#">The Gen Z Interview Playbook</a></li>
+                <li>📊 <a href="#">Link HRIS Perusahaan</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- SCRIPT UNTUK SISTEM PIN -->
+    <script>
+        function checkPIN() {
+            var pin = document.getElementById("pin-input").value;
+            
+            // Pengaturan PIN (Saat ini diset: 12345)
+            // Anda bisa mengganti angka 12345 di bawah ini dengan PIN yang Anda inginkan
+            if (pin === "12345") { 
+                document.getElementById("login-screen").style.display = "none";
+                document.getElementById("dashboard").style.display = "block";
+            } else {
+                document.getElementById("error-msg").style.display = "block";
+            }
+        }
+    </script>
 
 </body>
 </html>
